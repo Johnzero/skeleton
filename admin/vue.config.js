@@ -35,17 +35,18 @@ const assetsCDN = {
 }
 
 module.exports = {
-  port:80,
   devServer: {
-    // proxy: {
-    //   '/api': { //此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致
-    //     target: process.env.VUE_APP_API_BASE_URL,
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/api': ''
-    //     }
-    //   }
-    // }
+    port:8000,
+    proxy: {
+      '/api': { //此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致
+        // target: process.env.VUE_APP_API_BASE_URL,
+        target:'http://localhost:9501',
+        changeOrigin: false,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    }
   },
   pluginOptions: {
     'style-resources-loader': {

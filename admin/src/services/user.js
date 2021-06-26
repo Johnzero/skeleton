@@ -1,4 +1,4 @@
-import {LOGIN, ROUTES} from '@/services/api'
+import {LOGIN, ROUTES,USERINFO} from '@/services/api'
 import {request, METHOD, removeAuthorization} from '@/utils/request'
 
 /**
@@ -9,8 +9,10 @@ import {request, METHOD, removeAuthorization} from '@/utils/request'
  */
 export async function login(name, password) {
   return request(LOGIN, METHOD.POST, {
-    name: name,
-    password: password
+    username: name,
+    password: password,
+    captcha: 123,
+    code_key:123
   })
 }
 
@@ -18,6 +20,9 @@ export async function getRoutesConfig() {
   return request(ROUTES, METHOD.GET)
 }
 
+export async function getUserinfo() {
+  return request(USERINFO, METHOD.GET)
+}
 /**
  * 退出登录
  */

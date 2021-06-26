@@ -58,5 +58,3 @@ $ npm run serve
   <img src="./src/assets/img/alipay.png" width="320px" style="display: inline-block;" />
   <img src="./src/assets/img/wechatpay.png" width="320px" style="display: inline-block; margin-left: 24px;" />
 </p>
-
-

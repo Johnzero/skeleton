@@ -11,7 +11,7 @@
       <a-form @submit="onSubmit" :form="form">
         <a-tabs size="large" :tabBarStyle="{textAlign: 'center'}" style="padding: 0 2px;">
           <a-tab-pane tab="账户密码登录" key="1">
-            <a-alert type="error" :closable="true" v-if="error" :message="error" @close='onClose' showIcon style="margin-bottom: 24px;" />
+            <a-alert type="error" :closable="true" v-show="error" :message="error" showIcon style="margin-bottom: 24px;" />
             <a-form-item>
               <a-input
                 autocomplete="autocomplete"
@@ -75,7 +75,7 @@
 
 <script>
 import CommonLayout from '@/layouts/CommonLayout'
-import {login, getRoutesConfig} from '@/services/user'
+import {login, getRoutesConfig,getUserinfo} from '@/services/user'
 import {setAuthorization} from '@/utils/request'
 import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
@@ -111,25 +111,24 @@ export default {
     afterLogin(res) {
       this.logging = false
       const loginRes = res.data
-      if (loginRes.code >= 0) {
-        const {user, permissions, roles} = loginRes.data
-        this.setUser(user)
-        this.setPermissions(permissions)
-        this.setRoles(roles)
-        setAuthorization({token: loginRes.data.token, expireAt: new Date(loginRes.data.expireAt)})
+      if (loginRes.code == 200) {
+        
+        setAuthorization({token: loginRes.data.access_token, expireAt: new Date(loginRes.data.expireAt)})
         // 获取路由配置
+        getUserinfo().then(result => {
+          this.setUser(result.data.data.user_info)
+          this.setPermissions(result.data.data.permission)
+          this.setRoles(result.data.data.role_info)
+        })
         getRoutesConfig().then(result => {
           const routesConfig = result.data.data
           loadRoutes(routesConfig)
-          this.$router.push('/demo')
+          this.$router.push('/dashboard/workplace')
           this.$message.success(loginRes.message, 3)
         })
       } else {
-        this.error = loginRes.message
+        this.error = loginRes.msg
       }
-    },
-    onClose() {
-      this.error = false
     }
   }
 }

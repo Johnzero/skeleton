@@ -56,7 +56,8 @@ export default {
     }
   },
   mutations: {
-    setUser (state, user) {
+    setUser(state, user) {
+      
       state.user = user
       localStorage.setItem(process.env.VUE_APP_USER_KEY, JSON.stringify(user))
     },

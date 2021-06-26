@@ -233,8 +233,15 @@ export default {
     },
     getSelectedKeys() {
       let matches = this.$route.matched
-      const route = matches[matches.length - 1]
+      let route = matches[matches.length - 2]
+      if (route == undefined) {
+        route = matches[matches.length-1]
+      }
       let chose = this.routesMap[route.path]
+      if (chose == undefined) {
+        route = matches[matches.length-1]
+        chose = this.routesMap[route.path]
+      }
       if (chose.meta && chose.meta.highlight) {
         chose = this.routesMap[chose.meta.highlight]
         const resolve = this.$router.resolve({path: chose.fullPath})
