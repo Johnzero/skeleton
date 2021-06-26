@@ -17,17 +17,18 @@ use Psr\Log\LogLevel;
 return [
     'app_name'                   => env('APP_NAME', 'skeleton'),
     'app_env'                    => env('APP_ENV', 'dev'),
-    'scan_cacheable'             => env('SCAN_CACHEABLE', false),
-    'request_log'                => env('APP_REQUEST_LOG', false),
-    'response_log'               => env('APP_RESPONSE_LOG', false),
+    'scan_cacheable'             => env('SCAN_CACHEABLE', true),
+    'request_log'                => env('APP_REQUEST_LOG', true),
+    'response_log'               => env('APP_RESPONSE_LOG', true),
     // 是否记录日志
-    'app_log'                    => env('APP_LOG', false),
+    'app_log'                    => env('APP_LOG', true),
     // 是否记录框架的日志
-    'hf_log'                     => env('HF_LOG', false),
+    'hf_log'                     => env('HF_LOG', true),
     'cors_access'                => env('CORS_ACCESS', true),
     //用户id的前缀，作用在用户id的生成规则,最多使用3位
     'app_uid_prefix'             => env('APP_UID_PREFIX', 'ym'),
     'super_admin'                => env('SUPER_ADMIN', 'null'),
+    'url'                        => 'http://127.0.0.1:9501',
     // 允许跨域的域名
     'allow_origins'              => [
         'http://127.0.0.1',

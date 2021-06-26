@@ -52,7 +52,7 @@ class CorsMiddleware implements MiddlewareInterface
                     $response = $response->withHeader('Access-Control-Allow-Methods',
                         'POST, GET, OPTIONS, PUT, PATCH, DELETE')
                         ->withHeader('Access-Control-Allow-Headers',
-                            'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Authorization , Access-Control-Request-Headers, X-CSRF-TOKEN,DNT,Keep-Alive,User-Agent,Cache-Control,hyperf-session-id');
+                            'Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method,Authorization,Access-Control-Request-Headers, X-CSRF-TOKEN,DNT,Keep-Alive,User-Agent,Cache-Control,hyperf-session-id,Cookie');
                     Context::set(ResponseInterface::class, $response);
                     // 非简单跨域请求的"预检"请求处理
                     if ($request->getMethod() == 'OPTIONS') {

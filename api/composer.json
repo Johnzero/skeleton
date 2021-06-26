@@ -30,13 +30,14 @@
         "hyperf/database": "^2.1",
         "hyperf/websocket-server": "^2.1",
         "hyperf/constants": "^2.1",
-        "donjan-deng/hyperf-permission": "^2.1",
         "phper666/jwt-auth": "~3.0.0",
         "easyswoole/verifycode": "3.x",
         "hyperf/filesystem": "~2.1",
         "xxtime/flysystem-aliyun-oss": "^1.5",
         "dragonmantank/cron-expression": "^3.1",
-        "hyperf/watcher": "~2.1"
+        "hyperf/watcher": "~2.1",
+        "donjan-deng/hyperf-permission": "^2.0",
+        "donjan-deng/hyperf-casbin": "^3.1"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.5",
