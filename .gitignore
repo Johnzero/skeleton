@@ -20,7 +20,7 @@ selenium-debug.log
 *.sln
 package-lock.json
 .env.production.local
-
+api/public/*
 api/.buildpath
 api/.settings/
 api/.project
