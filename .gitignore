@@ -34,3 +34,4 @@ api/.env
 api/.DS_Store
 *.lock
 .phpunit*
+api/public/*
