@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'hyperf-cms',
+  title: '安徽省国资委宣传管理平台',
    /**
    * 是否系统布局配置
    */
