@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'hyperf-cms',
+  title: '鲲银CRM管理系统',
    /**
    * 是否系统布局配置
    */

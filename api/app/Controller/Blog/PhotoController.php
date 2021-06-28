@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Controller\Blog;
 
@@ -28,7 +28,7 @@ class PhotoController extends AbstractController
      * @var Photo
      */
     private $photo;
-
+    
     /**
      * 获取图片列表
      * @RequestMapping(path="list", methods="get")
@@ -41,19 +41,21 @@ class PhotoController extends AbstractController
     {
         $photoQuery = $this->photo->newQuery();
         $photoAlbum = $this->request->input('photo_album') ?? '';
-        if (!empty($photoAlbum)) $photoQuery->where('photo_album', $photoAlbum);
-
+        if (!empty($photoAlbum)) {
+            $photoQuery->where('photo_album', $photoAlbum);
+        }
+        
         $total = $photoQuery->count();
         $photoQuery = $this->pagingCondition($photoQuery, $this->request->all());
         $photoQuery->with('getPhotoAlbum:id,album_name');
         $data = $photoQuery->get();
-
+        
         return $this->success([
-            'list' => $data,
+            'list'  => $data,
             'total' => $total,
         ]);
     }
-
+    
     /**
      * @Explanation(content="添加图片")
      * @RequestMapping(path="store", methods="post")
@@ -64,38 +66,39 @@ class PhotoController extends AbstractController
      */
     public function store()
     {
-
+        
         $postData = $this->request->all();
         $params = [
-            'photo_url'  => $postData['photo_url'] ?? '',
-            'photo_album'  => $postData['photo_album'] ?? '',
+            'photo_url'   => $postData['photo_url'] ?? '',
+            'photo_album' => $postData['photo_album'] ?? '',
         ];
         //配置验证
         $rules = [
-            'photo_url'  => 'required|array',
-            'photo_album'  => 'required',
+            'photo_url'   => 'required|array',
+            'photo_album' => 'required',
         ];
         //错误信息
         $message = [
-            'photo_url.required' => '[photo_url]缺失',
-            'photo_url.array' => '[photo_url] 类型必须为数组',
+            'photo_url.required'   => '[photo_url]缺失',
+            'photo_url.array'      => '[photo_url] 类型必须为数组',
             'photo_album.required' => '[photo_album]缺失',
         ];
         $this->verifyParams($params, $rules, $message);
-
+        
         if (is_array($params['photo_url'])) {
             foreach ($params['photo_url'] as $key) {
                 Photo::query()->insert([
-                    'photo_url' => $key,
+                    'photo_url'   => $key,
                     'photo_album' => $params['photo_album'],
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
+                    'created_at'  => date('Y-m-d H:i:s'),
+                    'updated_at'  => date('Y-m-d H:i:s'),
                 ]);
             }
         }
+        
         return $this->successByMessage('添加照片成功');
     }
-
+    
     /**
      * @Explanation(content="删除图片信息")
      * @param int $id
@@ -104,13 +107,18 @@ class PhotoController extends AbstractController
      *     @Middleware(RequestMiddleware::class),
      *     @Middleware(PermissionMiddleware::class)
      * })
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function destroy(int $id)
     {
-        if (!intval($id)) $this->throwExp(StatusCode::ERR_VALIDATION, '参数错误');
-        if (!Photo::destroy($id)) $this->throwExp(StatusCode::ERR_EXCEPTION, '删除失败');
-
+        if (!intval($id)) {
+            $this->throwExp(StatusCode::ERR_VALIDATION, '参数错误');
+        }
+        if (!Photo::destroy($id)) {
+            $this->throwExp(StatusCode::ERR_EXCEPTION, '删除失败');
+        }
+        
         return $this->successByMessage('删除图片成功');
     }
 }
