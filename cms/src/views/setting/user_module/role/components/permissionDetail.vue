@@ -1,243 +1,251 @@
 <template>
-  <el-dialog
-    title="编辑角色权限"
-    :visible.sync="permissionDetailData.visible"
-    width="35%"
-    :close-on-click-modal="false"
-    class="field-dialog"
-  >
-    <div class="filter-container">
-      <el-input style="margin-bottom:10px" placeholder="输入关键字进行过滤" v-model="filterText"></el-input>
-      <div class="selected-fields">
-        <div class="selected-box" ref="selectedBox">
-          <div class="selected-group">
-            <el-tree
-              :data="permissionList"
-              :props="defaultProps"
-              show-checkbox
-              node-key="name"
-              ref="tree"
-              :default-expand-all="true"
-              indent="40"
-              :filter-node-method="filterNode"
-              :check-strictly="checkStrictly"
-            ></el-tree>
-          </div>
+    <el-dialog
+        title="编辑角色权限"
+        :visible.sync="permissionDetailData.visible"
+        width="45%"
+        :close-on-click-modal="true"
+        class="field-dialog"
+    >
+        <div class="filter-container">
+            <el-input
+                style="margin-bottom: 10px"
+                placeholder="输入关键字进行过滤"
+                v-model="filterText"
+            ></el-input>
+            <div class="selected-fields">
+                <div class="selected-box" ref="selectedBox">
+                    <div class="selected-group">
+                        <el-tree
+                            :data="permissionList"
+                            :props="defaultProps"
+                            show-checkbox
+                            node-key="name"
+                            ref="tree"
+                            :default-expand-all="true"
+                            indent="40"
+                            :filter-node-method="filterNode"
+                            :check-strictly="checkStrictly"
+                        ></el-tree>
+                    </div>
+                </div>
+            </div>
+            <el-button
+                style="margin-top: 10px; float: right"
+                @click="permissionDetailData.visible = false"
+                >取消</el-button
+            >
+            <el-button
+                type="primary"
+                style="margin: 10px 10px 0 0; float: right"
+                @click="handleConfirm"
+                >确认</el-button
+            >
         </div>
-      </div>
-      <el-button
-        style="margin-top: 10px;float: right;"
-        @click="permissionDetailData.visible = false"
-      >取消</el-button>
-      <el-button
-        type="primary"
-        style="margin: 10px 10px 0 0;float: right;"
-        @click="handleConfirm"
-      >确认</el-button>
-    </div>
-  </el-dialog>
+    </el-dialog>
 </template>
 
 <script>
 import {
-  accordRolePermission,
-  getPermissionTreeByRole,
-} from '@/api/setting/user_module/permission'
+    accordRolePermission,
+    getPermissionTreeByRole,
+} from "@/api/setting/user_module/permission";
 export default {
-  name: 'PermissionDetail',
-  props: {
-    permissionDetailData: {
-      type: Object,
-      default: {},
+    name: "PermissionDetail",
+    props: {
+        permissionDetailData: {
+            type: Object,
+            default: {},
+        },
     },
-  },
-  data() {
-    return {
-      //tree节点配置
-      defaultProps: {
-        children: 'child',
-        label: 'display_name',
-      },
-      //过滤权限字段
-      filterText: '',
-      //tree组件是否父子级关联
-      checkStrictly: false,
-      //权限列表
-      permissionList: [],
-      //用户拥有权限列表
-      userHasPermissionList: [],
-    }
-  },
-  mounted() {},
-  watch: {
-    filterText(val) {
-      this.$refs.tree.filter(val)
+    data() {
+        return {
+            //tree节点配置
+            defaultProps: {
+                children: "child",
+                label: "display_name",
+            },
+            //过滤权限字段
+            filterText: "",
+            //tree组件是否父子级关联
+            checkStrictly: false,
+            //权限列表
+            permissionList: [],
+            //用户拥有权限列表
+            userHasPermissionList: [],
+        };
     },
-  },
-  created() {},
-  methods: {
-    init() {
-      getPermissionTreeByRole({
-        role_id: this.permissionDetailData.roleId,
-      }).then((response) => {
-        if (response.code == 200) {
-          this.permissionList = response.data.permission_list
-          this.checkStrictly = true //重点：给数节点赋值之前 先设置为true
-          this.$nextTick(() => {
-            this.$refs.tree.setCheckedKeys(response.data.role_has_permission)
-            this.checkStrictly = false //重点：给数节点赋值之前 先设置为true
-          })
-        }
-      })
+    mounted() {},
+    watch: {
+        filterText(val) {
+            this.$refs.tree.filter(val);
+        },
     },
-    filterNode(value, data) {
-      if (!value) return true
-      return data.display_name.indexOf(value) !== -1
-    },
-    handleConfirm() {
-      this.$confirm('确认提交修改用户权限, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      })
-        .then(() => {
-          var checkedKeys = this.$refs.tree.getCheckedKeys()
-          var halfCheckedKeys = this.$refs.tree.getHalfCheckedKeys()
-          var checkedPermission = checkedKeys.concat(halfCheckedKeys)
+    created() {},
+    methods: {
+        init() {
+            getPermissionTreeByRole({
+                role_id: this.permissionDetailData.roleId,
+            }).then((response) => {
+                if (response.code == 200) {
+                    this.permissionList = response.data.permission_list;
+                    this.checkStrictly = true; //重点：给数节点赋值之前 先设置为true
+                    this.$nextTick(() => {
+                        this.$refs.tree.setCheckedKeys(response.data.role_has_permission);
+                        this.checkStrictly = false; //重点：给数节点赋值之前 先设置为true
+                    });
+                }
+            });
+        },
+        filterNode(value, data) {
+            if (!value) return true;
+            return data.display_name.indexOf(value) !== -1;
+        },
+        handleConfirm() {
+            this.$confirm("确认提交修改用户权限, 是否继续?", "提示", {
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                type: "warning",
+            })
+                .then(() => {
+                    var checkedKeys = this.$refs.tree.getCheckedKeys();
+                    var halfCheckedKeys = this.$refs.tree.getHalfCheckedKeys();
+                    var checkedPermission = checkedKeys.concat(halfCheckedKeys);
 
-          var postData = {
-            role_id: this.permissionDetailData.roleId,
-            role_has_permission: checkedPermission,
-          }
-          accordRolePermission(postData).then((response) => {
-            if (response.code == 200) this.permissionDetailData.visible = false
-          })
-        })
-        .catch(() => {})
+                    var postData = {
+                        role_id: this.permissionDetailData.roleId,
+                        role_has_permission: checkedPermission,
+                    };
+                    accordRolePermission(postData).then((response) => {
+                        if (response.code == 200)
+                            this.permissionDetailData.visible = false;
+                    });
+                })
+                .catch(() => {});
+        },
     },
-  },
-}
+};
 </script>
-
 
 <style lang="scss" scoped>
 .filter-container::after {
-  content: '';
-  display: block;
-  clear: both;
+    content: "";
+    display: block;
+    clear: both;
 }
-
+// .field-dialog .el-dialog__body {
+//     padding: 15px 15px;
+// }
 .box-head {
-  margin-bottom: 15px;
-  padding: 10px 0;
-  font-size: 16px;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 0px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
 }
 
 .all-fields,
 .selected-fields {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  overflow-y: scroll;
-  height: 500px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+    height: 400px;
 }
 
 .all-fields {
-  margin-right: 2%;
-  //width: 69%;
+    margin-right: 2%;
+    //width: 69%;
 }
 
 .checkAll {
-  display: block;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: #f7f9fc;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #f7f9fc;
 }
 
 .all-fields ::v-deep .el-checkbox__label {
-  font-size: 16px;
+    font-size: 16px;
 }
 .all-fields ::v-deep .el-checkbox__inner {
-  width: 16px;
-  height: 16px;
-  &::before {
-    top: 6px;
-  }
-  &::after {
-    top: 2px;
-    left: 5px;
-  }
+    width: 16px;
+    height: 16px;
+    &::before {
+        top: 6px;
+    }
+    &::after {
+        top: 2px;
+        left: 5px;
+    }
 }
 .checkAll ::v-deep .el-checkbox__label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .checkItem {
-  margin: 0 0 10px 0;
-  width: 33.333333%;
+    margin: 0 0 10px 0;
+    width: 33.333333%;
 }
 .checkItem:hover ::v-deep .el-checkbox__inner {
-  border-color: #409eff;
+    border-color: #409eff;
 }
 
 .selected-group {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  &:last-child {
-    border-bottom: none;
-  }
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    &:last-child {
+        border-bottom: none;
+    }
 }
 
 .selected-item {
-  position: relative;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background-color: #f8f8f8;
-  border-radius: 10px;
-  cursor: move;
-  &--active {
-    background-color: #ddd;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  .cancelItemBtn {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    margin-top: -8px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 50%;
-      margin-top: -1px;
-      width: 100%;
-      height: 2px;
-      background-color: #9f9f9f;
-      transition: all 0.3s;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    cursor: move;
+    &--active {
+        background-color: #ddd;
     }
-    &::before {
-      transform: rotate(45deg);
-    }
-    &::after {
-      transform: rotate(-45deg);
+    &:last-child {
+        margin-bottom: 0;
     }
 
-    &:hover {
-      &::before,
-      &::after {
-        background-color: #f00;
-      }
+    .cancelItemBtn {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        margin-top: -8px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -1px;
+            width: 100%;
+            height: 2px;
+            background-color: #9f9f9f;
+            transition: all 0.3s;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+
+        &:hover {
+            &::before,
+            &::after {
+                background-color: #f00;
+            }
+        }
     }
-  }
 }
 </style>
