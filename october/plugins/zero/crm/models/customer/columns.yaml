@@ -1,0 +1,38 @@
+columns:
+    id:
+        label: 序号
+        type: number
+        searchable: false
+        sortable: false
+    username:
+        label: 客户姓名
+        type: text
+        searchable: true
+        sortable: false
+    admin:
+        label: 客户经理
+        type: text
+        relation: admin
+        select: login
+        searchable: true
+        sortable: false
+    room:
+        label: 地址
+        type: partial
+        path: column_room
+        #        type: text
+        #        relation: room
+        #        select: unit
+        searchable: false
+        sortable: false
+    sign_time:
+        label: 签约时间
+        type: datetime
+        searchable: true
+        sortable: true
+    updated_at:
+        label: 更新时间
+        type: datetime
+        searchable: false
+        sortable: true
+

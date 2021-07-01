@@ -1,0 +1,10 @@
+name: Customers
+form: $/zero/crm/models/customer/fields.yaml
+modelClass: Zero\Crm\Models\Customer
+defaultRedirect: zero/crm/customers
+create:
+    redirect: 'zero/crm/customers/update/:id'
+    redirectClose: zero/crm/customers
+update:
+    redirect: zero/crm/customers
+    redirectClose: zero/crm/customers

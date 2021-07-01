@@ -23,14 +23,13 @@
                     >
                 </el-badge>
             </div>
-            <div align="center" style="margin-bottom: 10px">
+            <div align="center" style="padding: 20px 0">
                 <el-link :underline="false" icon="el-icon-location-outline"
                     >Copyright 1998 - 2021 安徽鲲银企业管理咨询有限公司. All Rights
                     Reserved</el-link
                 >
             </div>
         </div>
-
         <chat ref="chat" :chatDialogData="chatDialogData"></chat>
     </div>
 </template>

@@ -1,0 +1,31 @@
+columns:
+    id:
+        label: 序号
+        type: number
+        searchable: false
+        sortable: false
+    building:
+        label: 楼盘
+        type: text
+        relation: building
+        select: name
+        searchable: true
+        sortable: true
+    unit:
+        label: 房号
+        type: number
+        searchable: true
+        sortable: false
+    size:
+        label: 建筑面积
+        type: text
+        searchable: false
+        sortable: false
+    price:
+        label: 价格（万元）
+        type: text
+        searchable: false
+        sortable: false
+    updated_at:
+        label: 更新时间
+        type: datetime

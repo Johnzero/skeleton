@@ -19,12 +19,10 @@
                 <div style="text-align: center"></div>
                 <h2 class="login-title color-main" style="font-size: 25px">
                     <img
-                        src="https://hyperf-cms.oss-cn-guangzhou.aliyuncs.com/logo/logo.min.png"
-                        width="60px"
-                        height="60px"
-                        alt
-                        style="vertical-align: middle; margin-right: 15px"
-                    />Hyperf-cms
+                        src="@/assets/logo.png"
+                        width="80%"
+                        style="vertical-align: middle"
+                    />
                 </h2>
                 <el-form-item prop="username">
                     <el-input
@@ -62,7 +60,7 @@
                         style="width: 170px; margin-right: 10px"
                         v-model="loginForm.captcha"
                         @keyup.enter.native="handleLogin"
-                        placeholder="清输入验证码"
+                        placeholder="请输入验证码"
                     >
                         <span slot="prefix">
                             <svg-icon icon-class="message" class="color-main"></svg-icon>

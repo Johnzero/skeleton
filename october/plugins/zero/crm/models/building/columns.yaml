@@ -1,0 +1,43 @@
+columns:
+    id:
+        label: 序号
+        type: number
+        searchable: false
+        sortable: false
+    name:
+        label: 楼盘名称
+        type: text
+        searchable: true
+        sortable: false
+    #    description:
+    #        label: 简介
+    #        type: text
+    #        searchable: false
+    #        sortable: false
+    country:
+        label: 省市
+        searchable: true
+        relation: country
+        select: name
+        sortable: false
+    state:
+        label: 地区
+        searchable: true
+        relation: state
+        select: name
+        sortable: false
+    total_area:
+        label: 建筑面积
+        type: text
+        searchable: false
+        sortable: false
+    area:
+        label: 可用面积
+        type: text
+        searchable: false
+        sortable: false
+    updated_at:
+        label: 更新时间
+        type: datetime
+        searchable: false
+        sortable: true

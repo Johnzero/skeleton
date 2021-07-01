@@ -1,0 +1,27 @@
+fields:
+    building:
+        label: 归属楼盘
+        type: relation
+        nameFrom: name
+        span: left
+        placeholder: -- 请选择 --
+        required: true
+    unit:
+        label: 房间号
+        span: auto
+        type: text
+        required: true
+    size:
+        label: 建筑面积（平米）
+        span: auto
+        type: number
+    price:
+        label: 单价（万）
+        span: auto
+        type: number
+    picture:
+        label: 房屋照片
+        span: auto
+        type: fileupload
+        mode: image
+

@@ -1,0 +1,10 @@
+name: Rooms
+form: $/zero/crm/models/room/fields.yaml
+modelClass: Zero\Crm\Models\Room
+defaultRedirect: zero/crm/rooms
+create:
+    redirect: 'zero/crm/rooms/update/:id'
+    redirectClose: zero/crm/rooms
+update:
+    redirect: zero/crm/rooms
+    redirectClose: zero/crm/rooms

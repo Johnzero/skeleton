@@ -1,0 +1,12 @@
+list: $/zero/crm/controllers/customerlists/columns.yaml
+modelClass: Zero\Crm\Models\Customer
+title: CustomerLists
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'zero/crm/customerlists/preview/:id'

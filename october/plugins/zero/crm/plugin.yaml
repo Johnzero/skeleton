@@ -1,0 +1,10 @@
+plugin:
+    name: 'zero.crm::lang.plugin.name'
+    description: 'zero.crm::lang.plugin.description'
+    author: zero
+    icon: oc-icon-cc
+    homepage: ''
+permissions:
+    building:
+        tab: 楼盘管理
+        label: Building

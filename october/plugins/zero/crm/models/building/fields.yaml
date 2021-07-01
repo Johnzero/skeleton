@@ -1,0 +1,35 @@
+fields:
+    name:
+        label: 楼盘名称
+        span: auto
+        type: text
+    country:
+        label: 省市
+        type: dropdown
+        span: left
+        placeholder: -- 请选择 --
+    state:
+        label: 地区
+        type: dropdown
+        span: right
+        dependsOn: country
+    total_area:
+        label: 建筑面积
+        span: auto
+        type: number
+    area:
+        label: 可用面积
+        span: auto
+        type: number
+    #    _num:
+    #        label: 栋
+    #        span: auto
+    #        type: number
+    #    _size:
+    #        label: 多少房间
+    #        span: auto
+    #        type: number
+    description:
+        label: 楼盘简介
+        type: textarea
+        span: full

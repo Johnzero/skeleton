@@ -1,0 +1,10 @@
+name: Buildings
+form: $/zero/crm/models/building/fields.yaml
+modelClass: Zero\Crm\Models\Building
+defaultRedirect: zero/crm/buildings
+create:
+    redirect: 'zero/crm/buildings/update/:id'
+    redirectClose: zero/crm/buildings
+update:
+    redirect: zero/crm/buildings
+    redirectClose: zero/crm/buildings

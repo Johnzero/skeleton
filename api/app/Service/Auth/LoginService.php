@@ -187,7 +187,6 @@ class LoginService extends BaseService
                 $module_children[] = &$permissionList[$key];
             }
         }
-        
         foreach ($module_children as $key => $value) {
             if (!empty($value['children'])) {
                 $routers[$value['id']] = [
@@ -205,6 +204,17 @@ class LoginService extends BaseService
                 ];
                 foreach ($value['children'] as $k => $v) {
                     $temp = [];
+                    $routers[$value['id']]['children'][] = [
+                        'name'       => $v['name'],
+                        'path'       => $v['url'],
+                        'hidden'     => $v['hidden'],
+                        'alwaysShow' => true,
+                        'component'  => $v['component'],
+                        'meta'       => [
+                            'icon'  => $v['icon'],
+                            'title' => $v['display_name'],
+                        ],
+                    ];
                     if (!empty($v['children'])) {
                         foreach ($v['children'] as $k1 => $v1) {
                             $temp[] = [
