@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -15,9 +15,9 @@ return [
     | of this page. Otherwise a default error page is shown.
     |
     */
-
+    
     'debug' => true,
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -27,9 +27,9 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     */
-
+    
     'name' => 'October CMS',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -40,9 +40,9 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
+    
     'url' => 'http://localhost',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -61,9 +61,9 @@ return [
     | to display dates & times.
     |
     */
-
-    'timezone' => 'UTC',
-
+    
+    'timezone' => 'Asia/Shanghai',
+    
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -80,9 +80,9 @@ return [
     | Backend\Models\Preference->getLocaleOptions())
     |
     */
-
+    
     'locale' => 'zh-cn',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -93,9 +93,9 @@ return [
     | the language folders that are provided through your application.
     |
     */
-
+    
     'fallback_locale' => 'en',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -106,11 +106,11 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
-
+    
     'key' => 'OklrOpetC0HRmfGlEQ8N40Qs8S75hwJp',
-
+    
     'cipher' => 'AES-256-CBC',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -121,14 +121,14 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
-
+    
     'providers' => array_merge(include(base_path('modules/system/providers.php')), [
-
+        
         // 'Illuminate\Html\HtmlServiceProvider', // Example
-
+        
         'System\ServiceProvider',
     ]),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Load automatically discovered packages
@@ -146,7 +146,7 @@ return [
     | even if discovery is disabled.
     |
     */
-
+    
     'loadDiscoveredPackages' => false,
     
     /*
@@ -159,11 +159,11 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
+    
     'aliases' => array_merge(include(base_path('modules/system/aliases.php')), [
-
+        
         // 'Str' => 'Illuminate\Support\Str', // Example
-
+    
     ]),
 
 ];

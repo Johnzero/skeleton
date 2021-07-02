@@ -1,0 +1,10 @@
+name: Inprogress
+form: $/zero/crm/models/customer/fields_inprogress.yaml
+modelClass: Zero\Crm\Models\Customer
+defaultRedirect: zero/crm/inprogress
+create:
+    redirect: 'zero/crm/inprogress/update/:id'
+    redirectClose: zero/crm/inprogress
+update:
+    redirect: zero/crm/inprogress
+    redirectClose: zero/crm/inprogress

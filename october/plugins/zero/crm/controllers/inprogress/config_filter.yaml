@@ -1,0 +1,33 @@
+scopes:
+    admin:
+        label: 客户经理
+        modelClass: Backend\Models\User
+        conditions: admin_id in (:filtered)
+        nameFrom: login
+    sign_time:
+        label: 签约时间范围
+        type: daterange
+        conditions: sign_time >= ':after' AND sign_time <= ':before'
+    can_pz:
+        label: 拍照进度
+        type: group
+        conditions: can_pz in (:filtered)
+        options:
+            否: 否
+            是: 是
+            一拍结束: 一拍结束
+            二拍结束: 二拍结束
+            拍照完成: 拍照完成
+    yhjd:
+        label: 银行进度
+        type: group
+        conditions: yhjd in (:filtered)
+        options:
+            已拒: 已拒
+            待审批: 待审批
+            已审批: 已审批
+            已放全款: 已放全款
+            已结佣: 已结佣
+#    labelText:
+#        label: 栏目排序请到编辑平台列表页拖拽。
+#        type: label

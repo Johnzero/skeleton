@@ -21,7 +21,7 @@ class MyCustomers extends Controller
     public function listExtendQuery($query)
     {
         $user = BackendAuth::getUser();
-        $query->where('admin_id', $user->id)->orderBy('updated_at', 'desc');
+        $query->where('admin_id', $user->id)->whereNull('sign_time')->orderBy('updated_at', 'desc');
     }
     
 }

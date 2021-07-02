@@ -9,10 +9,11 @@ columns:
         type: text
         searchable: true
         sortable: false
-    tel:
-        label: 手机号码
-        type: text
-        searchable: true
+    room:
+        label: 地址
+        type: partial
+        path: column_room
+        searchable: false
         sortable: false
     admin:
         label: 客户经理
@@ -21,19 +22,34 @@ columns:
         select: login
         searchable: true
         sortable: false
-    room:
-        label: 地址
-        type: partial
-        path: column_room
         #        type: text
         #        relation: room
         #        select: unit
+    sign_time:
+        label: 签约时间
+        type: datetime
+        format: Y-m-d
+        searchable: true
+        sortable: true
+    can_pz:
+        label: 拍照进度
+        type: text
         searchable: false
         sortable: false
-    progress:
-        label: 装修进度
+    yhjd:
+        label: 银行进度
         type: text
-        searchable: true
+        searchable: false
+        sortable: false
+    yfed:
+        label: 已放额度(万元)
+        type: text
+        searchable: false
+        sortable: false
+    wfed:
+        label: 未放额度(万元)
+        type: text
+        searchable: false
         sortable: false
     updated_at:
         label: 更新时间

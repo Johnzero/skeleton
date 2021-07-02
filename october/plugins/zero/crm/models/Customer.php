@@ -32,19 +32,22 @@ class Customer extends Model
         'admin' => ['Backend\Models\User']
     ];
     
-    public function beforeSave()
-    {
-        // return false;
-        // $user = BackendAuth::getUser();
-        // $find = Room::where("id", $this->room_id)->first();
-        // if (!empty($find)) {
-        //     return false;
-        // }
-        // $this->admin_id = $user->id;
-    }
+    // public function beforeSave()
+    // {
+    //     // return false;
+    //     // $user = BackendAuth::getUser();
+    //     // $find = Room::where("id", $this->room_id)->first();
+    //     // if (!empty($find)) {
+    //     //     return false;
+    //     // }
+    //     // $this->admin_id = $user->id;
+    // }
     
     public function beforeUpdate()
     {
+        $this->updated_at = date("Y-m-d H:i:s");
+        // var_dump($this->updated_at);
+        // exit;
         // $user = BackendAuth::getUser();
         // $this->admin_id = $user->id;
     }

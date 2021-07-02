@@ -30,7 +30,7 @@ columns:
         #        select: unit
         searchable: false
         sortable: false
-    jd:
+    progress:
         label: 装修进度
         type: text
         searchable: true

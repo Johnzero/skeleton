@@ -69,7 +69,7 @@ class Plugin extends PluginBase
                         'url'   => Backend::url('zero/crm/customerlists')
                     ),
                     'mycustomer'   => array(
-                        'label' => '我的客户',
+                        'label' => '对接客户',
                         'icon'  => 'icon-inbox',
                         'url'   => Backend::url('zero/crm/mycustomers'),
                     )
@@ -77,19 +77,34 @@ class Plugin extends PluginBase
             ],
             'progress' => [
                 'label'    => '签约数据流转',
-                'url'      => Backend::url('zero/crm/customerlists'),
+                'url'      => Backend::url('zero/crm/inprogress'),
                 'icon'     => 'icon-check-square-o',
                 'order'    => 300,
                 'sideMenu' => [
-                    'customerlist' => array(
-                        'label' => '客户认领',
-                        'icon'  => 'icon-home',
-                        'url'   => Backend::url('zero/crm/customerlists')
+                    'inprogress' => array(
+                        'label' => '数据流转',
+                        'icon'  => 'icon-random',
+                        'url'   => Backend::url('zero/crm/inprogress')
                     ),
-                    'mycustomer'   => array(
-                        'label' => '我的客户',
+                    'ysp'        => array(
+                        'label' => '已审批',
+                        'icon'  => 'icon-calendar-check-o',
+                        'url'   => Backend::url('zero/crm/inprogress/ysp'),
+                    ),
+                    'one'        => array(
+                        'label' => '一拍结束',
+                        'icon'  => 'icon-camera-retro',
+                        'url'   => Backend::url('zero/crm/inprogress/one'),
+                    ),
+                    'two'        => array(
+                        'label' => '二拍结束',
+                        'icon'  => 'icon-camera',
+                        'url'   => Backend::url('zero/crm/inprogress/two'),
+                    ),
+                    'done'       => array(
+                        'label' => '全部放款',
                         'icon'  => 'icon-inbox',
-                        'url'   => Backend::url('zero/crm/mycustomers'),
+                        'url'   => Backend::url('zero/crm/inprogress/done'),
                     )
                 ]
             ]

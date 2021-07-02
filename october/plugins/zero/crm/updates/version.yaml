@@ -36,3 +36,6 @@
 1.0.13:
     - 'Updated table zero_crm_customer'
     - builder_table_update_zero_crm_customer_8.php
+1.0.14:
+    - 'Updated table zero_crm_customer'
+    - builder_table_update_zero_crm_customer_9.php

@@ -49,10 +49,13 @@ fields:
         label: 是否能拍照
         type: balloon-selector
         default: 是
+        readOnly: true
         options:
             否: 否
             是: 是
-            已拍: 已拍
+            一拍结束: 一拍结束
+            二拍结束: 二拍结束
+            拍照完成: 拍照完成
         span: row
         cssClass: col-xs-4
     qyed:
@@ -65,6 +68,17 @@ fields:
         type: number
         span: row
         cssClass: col-xs-4
+    yhjd:
+        label: 银行进度
+        type: balloon-selector
+        options:
+            已拒: 已拒
+            待审批: 待审批
+            已审批: 已审批
+            已放全款: 已放全款
+            已结佣: 已结佣
+        span: row
+        cssClass: col-xs-4
     dkname:
         label: 产品名称
         type: text
@@ -72,11 +86,6 @@ fields:
         cssClass: col-xs-4
     cl:
         label: 所缺材料
-        type: text
-        span: row
-        cssClass: col-xs-4
-    yhjd:
-        label: 银行进度
         type: text
         span: row
         cssClass: col-xs-4
@@ -104,7 +113,7 @@ fields:
         cssClass: col-xs-4
         placeholder: -- 请选择 --
     fksh:
-        label: 放款时间
+        label: 放款时间说明
         type: textarea
         span: row
         cssClass: col-xs-4

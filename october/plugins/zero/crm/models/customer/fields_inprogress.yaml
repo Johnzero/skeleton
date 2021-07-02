@@ -5,6 +5,7 @@ fields:
         span: row
         cssClass: col-xs-4
         required: true
+        readOnly: true
         #    sex:
         #        label: '性别'
         #        type: radio
@@ -16,15 +17,18 @@ fields:
         label: 身份证号码
         type: text
         span: row
+        readOnly: true
         cssClass: col-xs-4
     tel:
         label: 电话号码
         type: text
         span: row
+        readOnly: true
         cssClass: col-xs-4
     room:
         label: 客户地址
         type: relation
+        readOnly: true
         nameFrom: address
         span: row
         cssClass: col-xs-4
@@ -34,13 +38,16 @@ fields:
         label: 签约时间
         type: datepicker
         mode: date
+        format: Y-m-d
         span: row
         cssClass: col-xs-4
+        readOnly: true
     progress:
         label: 装修进度
         type: text
         span: row
         cssClass: col-xs-4
+        readOnly: true
     can_pz:
         label: 是否能拍照
         type: balloon-selector
@@ -56,12 +63,14 @@ fields:
         cssClass: col-xs-4
     qyed:
         label: 签约额度
+        readOnly: true
         type: number
         span: row
         cssClass: col-xs-4
     yged:
         label: 预估额度
         type: number
+        readOnly: true
         span: row
         cssClass: col-xs-4
     yhjd:
@@ -85,6 +94,7 @@ fields:
         type: text
         span: row
         cssClass: col-xs-4
+
     yped:
         label: 已批额度
         type: number
@@ -105,6 +115,7 @@ fields:
         type: relation
         nameFrom: login
         span: row
+        readOnly: true
         cssClass: col-xs-4
         placeholder: -- 请选择 --
     fksh:
